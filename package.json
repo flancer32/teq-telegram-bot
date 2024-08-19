@@ -1,0 +1,33 @@
+{
+  "name": "@flancer32/teq-telegram-bot",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A TeqFW plugin to build Telegram bots.",
+  "homepage": "https://github.com/flancer32/teq-telegram-bot/",
+  "bugs": {
+    "url": "https://github.com/flancer32/teq-telegram-bot/issues",
+    "email": "alex@flancer32.com"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Alex Gusev",
+    "email": "alex@flancer64.com",
+    "url": "https://github.com/flancer64"
+  },
+  "repository": "github:flancer32/teq-telegram-bot",
+  "scripts": {
+    "help": "node ./bin/tequila.mjs -h",
+    "start": "node ./bin/tequila.mjs app-start",
+    "stop": "node ./bin/tequila.mjs app-stop",
+    "version": "node ./bin/tequila.mjs core-version",
+    "web-start": "node ./bin/tequila.mjs web-server-start",
+    "web-stop": "node ./bin/tequila.mjs web-server-stop"
+  },
+  "dependencies": {
+    "@teqfw/core": "^0.30.0",
+    "@teqfw/di": "^0.30.0",
+    "@teqfw/web": "^0.23.0",
+    "grammy": "^1.28.0"
+  },
+  "devDependencies": {}
+}

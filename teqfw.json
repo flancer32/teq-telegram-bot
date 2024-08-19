@@ -1,0 +1,22 @@
+{
+  "@teqfw/di": {
+    "autoload": {
+      "ns": "Telegram_Bot",
+      "path": "./src"
+    }
+  },
+  "@teqfw/core": {
+    "commands": [
+      "Telegram_Bot_Back_Cli_Start",
+      "Telegram_Bot_Back_Cli_Stop"
+    ]
+  },
+  "@teqfw/web": {
+    "handlers": {
+      "Telegram_Bot_Back_Web_Handler_Bot": {
+        "before": ["TeqFw_Web_Back_App_Server_Handler_Final"],
+        "spaces": ["telegram-bot"]
+      }
+    }
+  }
+}
