@@ -3,7 +3,7 @@
  */
 export default class Telegram_Bot_Back_Defaults {
 
-    CLI_PREFIX = 'app';
+    CLI_PREFIX = 'tg-bot'; // the prefix for CLI commands
 
     DATA_FILE_PID = './var/telegram-bot.pid'; // PID file to stop running the bot.
 

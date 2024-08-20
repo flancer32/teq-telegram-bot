@@ -1,11 +1,9 @@
 /**
- * Stop web server.
+ * Stop the bot has been started in the long pooling mode.
  * @namespace Telegram_Bot_Back_Cli_Stop
  */
-// MODULE'S VARS
-const NS = 'Telegram_Bot_Back_Cli_Stop';
 
-// MODULE'S FUNCS
+// FUNCS
 /**
  * Factory to create CLI command.
  *
@@ -26,27 +24,23 @@ export default function Factory(
 ) {
     // FUNCS
     /**
-     * Stop previously started web server (using PID file).
+     * Stop previously started NodeJS application (using PID file).
      * @returns {Promise<void>}
      * @memberOf Telegram_Bot_Back_Cli_Stop
      */
     const action = async function () {
-        // get PID and stop previously started process (web-server-start)
+        // get PID and stop previously started process
         const pid = await modPid.readPid(DEF.DATA_FILE_PID);
         if (pid) modPid.stop(pid);
-        // stop current process (web-server-stop)
+        // stop the current process
         await app.stop();
     };
-    Object.defineProperty(action, 'namespace', {value: NS});
 
     // COMPOSE RESULT
     const res = fCommand.create();
     res.realm = DEF.CLI_PREFIX;
     res.name = 'stop';
-    res.desc = 'stop the bot';
+    res.desc = 'stop the bot has been started in the long pooling mode';
     res.action = action;
     return res;
 }
-
-// finalize code components for this es6-module
-Object.defineProperty(Factory, 'namespace', {value: NS});

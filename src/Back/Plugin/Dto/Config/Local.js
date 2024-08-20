@@ -1,5 +1,5 @@
 /**
- * Local configuration DTO for the plugin.
+ * Local configuration DTO for the plugin (the `@flancer32/teq-telegram-bot` node in the `./etc/local.json` file).
  * @see TeqFw_Core_Back_Config
  */
 // MODULE'S VARS
@@ -13,8 +13,8 @@ class Dto {
     static namespace = NS;
     /** @type {string} */
     apiKeyTelegram;
-    /** @type {string} */
-    apiKeyWeather;
+    /** @type {boolean} */
+    webhookUseSecret;
 }
 
 /**
@@ -38,7 +38,7 @@ export default class Telegram_Bot_Back_Plugin_Dto_Config_Local {
             const res = Object.assign(new Dto(), data);
             // cast known attributes
             res.apiKeyTelegram = cast.string(data?.apiKeyTelegram);
-            res.apiKeyWeather = cast.string(data?.apiKeyWeather);
+            res.webhookUseSecret = cast.boolean(data?.webhookUseSecret);
             return res;
         };
     }

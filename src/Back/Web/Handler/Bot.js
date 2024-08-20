@@ -1,9 +1,10 @@
 /**
- * The web server handler to block API requests for unauthorized users.
+ * The web server handler to process all requests from Telegram server.
  */
-// MODULE'S IMPORT
+// IMPORT
 import {constants as H2} from 'node:http2';
-// MODULE'S VARS
+
+// VARS
 const {
     HTTP2_METHOD_POST,
 } = H2;
@@ -18,15 +19,13 @@ export default class Telegram_Bot_Back_Web_Handler_Bot {
     /**
      * @param {Telegram_Bot_Back_Defaults} DEF
      * @param {TeqFw_Core_Shared_Api_Logger} logger -  instance
-     * @param {TeqFw_Web_Back_Mod_Address} modAddress
-     * @param {Telegram_Bot_Back_Ext_Grammy} extGrammy
+     * @param {Telegram_Bot_Back_Mod_Bot} modBot
      */
     constructor(
         {
             Telegram_Bot_Back_Defaults$: DEF,
             TeqFw_Core_Shared_Api_Logger$$: logger,
-            TeqFw_Web_Back_Mod_Address$: modAddress,
-            Telegram_Bot_Back_Ext_Grammy$: extGrammy,
+            Telegram_Bot_Back_Mod_Bot$: modBot,
         }
     ) {
         /** @type {function} */
@@ -40,13 +39,11 @@ export default class Telegram_Bot_Back_Web_Handler_Bot {
          * @memberOf Telegram_Bot_Back_Web_Handler_Bot
          */
         async function process(req, res) {
-            // FUNCS
-
-
-            // MAIN
-            const path = req.url;
-            logger.info(path);
             try {
+                logger.info(`Request URL: ${req.url}`);
+                const shared = req[DEF.MOD_WEB.HNDL_SHARE];
+                const jsonObj = shared[DEF.MOD_WEB.SHARE_REQ_BODY_JSON];
+                logger.info(JSON.stringify(jsonObj));
                 await _hook(req, res);
             } catch (e) {
                 logger.exception(e);
@@ -58,15 +55,15 @@ export default class Telegram_Bot_Back_Web_Handler_Bot {
         this.getProcessor = () => process;
 
         this.init = async function () {
-            _hook = extGrammy.getWebhook();
-            const endpoint = 'https://weather.dev.tg.wiredgeese.com/' + DEF.SHARED.SPACE_BOT;
-            const isSet = await extGrammy.getBot().api.setWebhook(endpoint);
+            logger.info(`== Initialize web requests handler for Telegram bot:`);
+            _hook = await modBot.initWebhookAdapter();
+            debugger
         };
 
         this.canProcess = function ({method, address} = {}) {
             return (
                 (method === HTTP2_METHOD_POST)
-
+                && (address?.space === DEF.SHARED.SPACE_BOT)
             );
         };
     }

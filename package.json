@@ -15,14 +15,6 @@
     "url": "https://github.com/flancer64"
   },
   "repository": "github:flancer32/teq-telegram-bot",
-  "scripts": {
-    "help": "node ./bin/tequila.mjs -h",
-    "start": "node ./bin/tequila.mjs app-start",
-    "stop": "node ./bin/tequila.mjs app-stop",
-    "version": "node ./bin/tequila.mjs core-version",
-    "web-start": "node ./bin/tequila.mjs web-server-start",
-    "web-stop": "node ./bin/tequila.mjs web-server-stop"
-  },
   "dependencies": {
     "@teqfw/core": "^0.30.0",
     "@teqfw/di": "^0.30.0",
