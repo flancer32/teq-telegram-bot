@@ -4,17 +4,20 @@
  */
 export default class Telegram_Bot_Back_Api_Setup {
     /**
-     * Get the list of available commands.
+     * Populate the given `bot` with commands.
      * @see https://grammy.dev/ref/core/api#setmycommands
      * @see https://core.telegram.org/bots/features#commands
+     * @see https://core.telegram.org/bots/features#global-commands
      *
-     * @return {[{command: string, description: string}]}
+     * @param {Bot} bot - @see https://github.com/grammyjs/grammY/blob/v1.29.0/src/bot.ts#L151
+     * @return {Promise<Bot>}
      */
-    getCommands() {
+    async commands(bot) {
         throw new Error('Please implement this method.');
     }
 
     /**
+     * Populate the given `bot` with event handlers.
      * @param {Bot} bot - @see https://github.com/grammyjs/grammY/blob/v1.29.0/src/bot.ts#L151
      * @return {Bot}
      */

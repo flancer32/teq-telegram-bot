@@ -93,9 +93,7 @@ export default class Telegram_Bot_Back_Mod_Bot {
                     throw `Cannot find API key to connect to Telegram. Please, add the key to './cfg/local.json'.`;
                 } else {
                     _bot = new Bot(_CFG.apiKeyTelegram, opts);
-                    const commands = apiSetup.getCommands();
-                    await _bot.api.setMyCommands(commands);
-                    logger.info(`Total ${commands.length} commands are set for the bot.`);
+                    await apiSetup.commands(_bot);
                     apiSetup.handlers(_bot);
                     logger.info(`All command handlers are set for the bot.`);
                     logger.info(`The Telegram bot is initialized.`);

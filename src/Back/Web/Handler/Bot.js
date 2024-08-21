@@ -57,7 +57,6 @@ export default class Telegram_Bot_Back_Web_Handler_Bot {
         this.init = async function () {
             logger.info(`== Initialize web requests handler for Telegram bot:`);
             _hook = await modBot.initWebhookAdapter();
-            debugger
         };
 
         this.canProcess = function ({method, address} = {}) {
