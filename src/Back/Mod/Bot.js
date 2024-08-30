@@ -31,6 +31,8 @@ export default class Telegram_Bot_Back_Mod_Bot {
         const {Bot, webhookCallback, InputFile} = Grammy;
         /** @type {Telegram_Bot_Back_Plugin_Dto_Config_Local.Dto} */
         const _CFG = config.getLocal(DEF.SHARED.NAME);
+        /** @type {TeqFw_Web_Back_Plugin_Dto_Config_Local.Dto} */
+        const _WEB = config.getLocal(DEF.MOD_WEB.SHARED.NAME);
         /** @type {Bot} */
         let _bot;
         /**
@@ -122,12 +124,12 @@ export default class Telegram_Bot_Back_Mod_Bot {
 
             const endpoint = composeEndpoint();
             const opts = {secret_token: _webhookToken};
-            opts.ip_address = '89.201.4.251';
             if (
-                (_CFG?.cert)
+                (_WEB?.server?.secure?.cert)
+                && (_WEB?.server?.secure?.key)
             ) {
-                opts.certificate = new InputFile(_CFG.cert);
-                logger.info(`The certificate '${_CFG.cert}' is used with webhook.`);
+                opts.certificate = new InputFile(_WEB.server.secure.cert);
+                logger.info(`The certificate '${_WEB.server.secure.cert}' is used with webhook.`);
             }
             const isSet = await bot.api.setWebhook(endpoint, opts);
             if (isSet) {
