@@ -6,6 +6,7 @@ import {constants as H2} from 'node:http2';
 
 // VARS
 const {
+    HTTP2_METHOD_GET,
     HTTP2_METHOD_POST,
 } = H2;
 
@@ -60,8 +61,9 @@ export default class Telegram_Bot_Back_Web_Handler_Bot {
         };
 
         this.canProcess = function ({method, address} = {}) {
+            console.log(`REQ: ${JSON.stringify(address)}`);
             return (
-                (method === HTTP2_METHOD_POST)
+                ((method === HTTP2_METHOD_POST) || (method === HTTP2_METHOD_GET))
                 && (address?.space === DEF.SHARED.SPACE_BOT)
             );
         };
