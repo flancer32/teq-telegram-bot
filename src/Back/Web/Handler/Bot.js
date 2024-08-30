@@ -41,7 +41,6 @@ export default class Telegram_Bot_Back_Web_Handler_Bot {
          */
         async function process(req, res) {
             try {
-                logger.info(`Request URL: ${req.url}`);
                 const shared = req[DEF.MOD_WEB.HNDL_SHARE];
                 const jsonObj = shared[DEF.MOD_WEB.SHARE_REQ_BODY_JSON];
                 logger.info(JSON.stringify(jsonObj));
@@ -61,7 +60,6 @@ export default class Telegram_Bot_Back_Web_Handler_Bot {
         };
 
         this.canProcess = function ({method, address} = {}) {
-            console.log(`REQ: ${JSON.stringify(address)}`);
             return (
                 ((method === HTTP2_METHOD_POST) || (method === HTTP2_METHOD_GET))
                 && (address?.space === DEF.SHARED.SPACE_BOT)
