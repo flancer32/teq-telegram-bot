@@ -1,5 +1,5 @@
 /**
- * Stop the bot has been started in the long pooling mode.
+ * Stop the bot has been started in the long polling mode.
  * @namespace Telegram_Bot_Back_Cli_Stop
  */
 
@@ -40,7 +40,7 @@ export default function Factory(
     const res = fCommand.create();
     res.realm = DEF.CLI_PREFIX;
     res.name = 'stop';
-    res.desc = 'stop the bot has been started in the long pooling mode';
+    res.desc = 'stop the bot has been started in the long polling mode';
     res.action = action;
     return res;
 }

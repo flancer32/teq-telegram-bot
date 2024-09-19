@@ -33,7 +33,7 @@ $ npm i @flancer32/teq-telegram-bot
 
 ```
 $ ./bin/tequila.mjs help
-$ ./bin/tequila.mjs tg-bot-start        # long pooling mode
+$ ./bin/tequila.mjs tg-bot-start        # long polling mode
 $ ./bin/tequila.mjs tg-bot-stop
 $ ./bin/tequila.mjs web-server-start    # webhook mode
 $ ./bin/tequila.mjs web-server-stop

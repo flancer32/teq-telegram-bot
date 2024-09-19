@@ -1,5 +1,5 @@
 /**
- * Start the bot in the long pooling mode.
+ * Start the bot in the long polling mode.
  * @namespace Telegram_Bot_Back_Cli_Start
  */
 
@@ -36,12 +36,12 @@ export default function Factory(
      * @memberOf Telegram_Bot_Back_Cli_Start
      */
     const action = async function (opts = null) {
-        logger.info('Starting the bot in the long pooling mode.');
+        logger.info('Starting the bot in the long polling mode.');
         try {
             await modPid.writePid(DEF.DATA_FILE_PID);
             const bot = await modBot.initBot();
             bot.start().catch(logger.exception);
-            logger.info(`The bot is started in the long pooling mode.`);
+            logger.info(`The bot is started in the long polling mode.`);
         } catch (e) {
             logger.exception(e);
         }
@@ -51,7 +51,7 @@ export default function Factory(
     const res = fCommand.create();
     res.realm = DEF.CLI_PREFIX;
     res.name = 'start';
-    res.desc = 'start the bot in the long pooling mode';
+    res.desc = 'start the bot in the long polling mode';
     res.action = action;
     return res;
 }
