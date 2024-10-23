@@ -1,28 +1,37 @@
 /**
- * Populate the bot with event handlers.
+ * Interface for setting up a bot with event handlers, commands, and middleware.
  * @interface
  */
 export default class Telegram_Bot_Back_Api_Setup {
     /**
-     * Populate the given `bot` with commands.
+     * Set up commands for the given `bot`.
      * @see https://grammy.dev/ref/core/api#setmycommands
      * @see https://core.telegram.org/bots/features#commands
-     * @see https://core.telegram.org/bots/features#global-commands
      *
-     * @param {Bot} bot - @see https://github.com/grammyjs/grammY/blob/v1.29.0/src/bot.ts#L151
-     * @return {Promise<Bot>}
+     * @param {Bot} bot - A grammY bot instance.
+     * @return {Promise<void>}
      */
     async commands(bot) {
         throw new Error('Please implement this method.');
     }
 
     /**
-     * Populate the given `bot` with event handlers.
-     * @param {Bot} bot - @see https://github.com/grammyjs/grammY/blob/v1.29.0/src/bot.ts#L151
-     * @return {Bot}
+     * Set up event handlers for the given `bot`.
+     *
+     * @param {Bot} bot - A grammY bot instance.
+     * @return {Promise<void>}
      */
-    handlers(bot) {
+    async handlers(bot) {
         throw new Error('Please implement this method.');
     }
 
+    /**
+     * Set up middleware for the given `bot`.
+     *
+     * @param {Bot} bot - A grammY bot instance.
+     * @return {Promise<void>}
+     */
+    async middleware(bot) {
+        throw new Error('Please implement this method.');
+    }
 }

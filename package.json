@@ -1,6 +1,6 @@
 {
   "name": "@flancer32/teq-telegram-bot",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "type": "module",
   "description": "A TeqFW plugin to build Telegram bots.",
   "homepage": "https://github.com/flancer32/teq-telegram-bot/",
@@ -17,9 +17,9 @@
   "repository": "github:flancer32/teq-telegram-bot",
   "dependencies": {
     "@grammyjs/conversations": "^1.2.0",
-    "@teqfw/core": "^0.30",
-    "@teqfw/di": "^0.30",
-    "@teqfw/web": "^0.24",
+    "@teqfw/core": "^0.30.3",
+    "@teqfw/di": "^0.30.1",
+    "@teqfw/web": "^0.24.2",
     "grammy": "^1.30.0"
   },
   "devDependencies": {

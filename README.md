@@ -53,4 +53,4 @@ File `./cfg/local.json` of the main app:
 
 ## API
 
-* Telegram_Bot_Back_Api_Setup: setup the grammY bot, add the commands and handlers.
+* `Telegram_Bot_Back_Api_Setup`: setup the grammY bot, add the middleware, commands and handlers.
