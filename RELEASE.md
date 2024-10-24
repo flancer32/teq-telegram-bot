@@ -1,5 +1,13 @@
 # @teq-telegram-bot: Releases
 
+## 0.2.1
+
+* Added `Telegram_Bot_Back_Mod_Bot_Catch` class for error handling in the bot.
+* Updated dependencies in `package.json` for `@grammyjs/conversations`, `grammy`, and added version ranges for
+  `@teqfw/core`, `@teqfw/di`, `@teqfw/web`, and `@teqfw/test`.
+* Enhanced constructor logic in `Telegram_Bot_Back_Mod_Bot` to include error handling.
+* Improved logging logic for incoming messages and error handling in middleware.
+
 ## 0.2.0
 
 * Introduced `Telegram_Bot_Back_Api_Factory_Middleware`.
