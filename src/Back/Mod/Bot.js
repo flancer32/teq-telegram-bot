@@ -17,14 +17,18 @@ export default class Telegram_Bot_Back_Mod_Bot {
      * @param {Telegram_Bot_Back_Defaults} DEF
      * @param {TeqFw_Core_Shared_Api_Logger} logger
      * @param {TeqFw_Core_Back_Config} config
+     *  @param {Telegram_Bot_Back_Mod_Bot_Catch} botCatch
      * @param {Telegram_Bot_Back_Api_Setup} apiSetup
      */
-    constructor({
-                    Telegram_Bot_Back_Defaults$: DEF,
-                    TeqFw_Core_Shared_Api_Logger$$: logger,
-                    TeqFw_Core_Back_Config$: config,
-                    Telegram_Bot_Back_Api_Setup$: apiSetup
-                }) {
+    constructor(
+        {
+            Telegram_Bot_Back_Defaults$: DEF,
+            TeqFw_Core_Shared_Api_Logger$$: logger,
+            TeqFw_Core_Back_Config$: config,
+            Telegram_Bot_Back_Mod_Bot_Catch$: botCatch,
+            Telegram_Bot_Back_Api_Setup$: apiSetup
+        }
+    ) {
         // VARS
         const {Bot, webhookCallback, InputFile} = Grammy;
         const _CFG = config.getLocal(DEF.SHARED.NAME);
@@ -66,6 +70,8 @@ export default class Telegram_Bot_Back_Mod_Bot {
                     throw new Error(`Telegram API key not found. Please add it to './cfg/local.json'.`);
                 }
                 _bot = new Bot(_CFG.apiKeyTelegram, opts);
+
+                botCatch.setup(_bot);
                 await apiSetup.middleware(_bot);
                 await apiSetup.commands(_bot);
                 await apiSetup.handlers(_bot);
@@ -94,7 +100,7 @@ export default class Telegram_Bot_Back_Mod_Bot {
             const endpoint = composeEndpoint();
             const opts = {secret_token: _webhookToken};
 
-            if (_WEB?.server?.secure?.cert && _WEB?.server?.secure?.key) {
+            if (_WEB?.server?.secure?.cert) {
                 opts.certificate = new InputFile(_WEB.server.secure.cert);
                 logger.info(`Certificate '${_WEB.server.secure.cert}' is used with webhook.`);
             }

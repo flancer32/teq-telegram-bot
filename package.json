@@ -17,12 +17,12 @@
   "repository": "github:flancer32/teq-telegram-bot",
   "dependencies": {
     "@grammyjs/conversations": "^1.2.0",
-    "@teqfw/core": "^0.30.3",
-    "@teqfw/di": "^0.30.1",
-    "@teqfw/web": "^0.24.2",
+    "@teqfw/core": ">=0.30.3 <1.0.0",
+    "@teqfw/di": ">=0.30.1 <1.0.0",
+    "@teqfw/web": ">=0.24.2 <1.0.0",
     "grammy": "^1.30.0"
   },
   "devDependencies": {
-    "@teqfw/test": "^0.21.0"
+    "@teqfw/test": ">=0.21.0 <1.0.0"
   }
 }
