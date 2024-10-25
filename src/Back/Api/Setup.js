@@ -16,6 +16,17 @@ export default class Telegram_Bot_Back_Api_Setup {
     }
 
     /**
+     * Set up description for the given `bot`.
+     *
+     * @param {Bot} bot - A grammY bot instance.
+     * @return {Promise<void>}
+     * @see https://core.telegram.org/bots/api#setmydescription
+     */
+    async description(bot) {
+        throw new Error('Please implement this method.');
+    }
+
+    /**
      * Set up event handlers for the given `bot`.
      *
      * @param {Bot} bot - A grammY bot instance.

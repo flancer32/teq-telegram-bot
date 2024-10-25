@@ -1,5 +1,9 @@
 # @teq-telegram-bot: Releases
 
+## 0.2.2 - TODO
+
+* Bot description is added to `Telegram_Bot_Back_Api_Setup`.
+
 ## 0.2.1
 
 * Added `Telegram_Bot_Back_Mod_Bot_Catch` class for error handling in the bot.

@@ -70,12 +70,23 @@ export default class Telegram_Bot_Back_Mod_Bot {
                     throw new Error(`Telegram API key not found. Please add it to './cfg/local.json'.`);
                 }
                 _bot = new Bot(_CFG.apiKeyTelegram, opts);
-
                 botCatch.setup(_bot);
-                await apiSetup.middleware(_bot);
-                await apiSetup.commands(_bot);
-                await apiSetup.handlers(_bot);
-                logger.info('All command handlers are set for the bot.');
+                if (typeof apiSetup.description === 'function') {
+                    await apiSetup.description(_bot);
+                    logger.info('Bot description has been successfully set.');
+                }
+                if (typeof apiSetup.middleware === 'function') {
+                    await apiSetup.middleware(_bot);
+                    logger.info('Middleware has been successfully set.');
+                }
+                if (typeof apiSetup.commands === 'function') {
+                    await apiSetup.commands(_bot);
+                    logger.info('Commands have been successfully set.');
+                }
+                if (typeof apiSetup.handlers === 'function') {
+                    await apiSetup.handlers(_bot);
+                    logger.info('All command handlers are set for the bot.');
+                }
                 logger.info('The Telegram bot is initialized.');
             }
             return _bot;
