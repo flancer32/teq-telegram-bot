@@ -2,7 +2,9 @@
 
 ## 0.2.2 - TODO
 
-* Bot description is added to `Telegram_Bot_Back_Api_Setup`.
+- Bot description is added to `Telegram_Bot_Back_Api_Setup`.
+- Added `Telegram_Bot_Back_Mod_Handler_Callback_Query_Data` for managing inline keyboard callback data with unique
+  handler registration and execution.
 
 ## 0.2.1
 
