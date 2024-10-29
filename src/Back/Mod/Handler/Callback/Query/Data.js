@@ -51,9 +51,9 @@ export default class Telegram_Bot_Back_Mod_Handler_Callback_Query_Data {
          * @param {number} [opts.timeout] - Custom timeout duration in milliseconds for auto-removal.
          * @param {CommonMessage} [opts.sentMsg]
          */
-        this.addHandler = (handler, ctx, opts = {}) => {
+        this.addHandler = (handler, ctx, {sentMsg, customId, timeout}) => {
             // Use custom ID if provided, otherwise generate a unique ID
-            const uniqueId = opts.customId || createUniqueId(ctx.message);
+            const uniqueId = customId || createUniqueId(ctx.message);
 
             // Clear existing timeout if handler with uniqueId already exists
             if (handlers.has(uniqueId)) {
@@ -63,11 +63,11 @@ export default class Telegram_Bot_Back_Mod_Handler_Callback_Query_Data {
             }
 
             // Set up cleanup function to remove handler after timeout
-            const timeoutDuration = opts.timeout || TIMEOUT;
+            const timeoutDuration = timeout || TIMEOUT;
             const timeoutCleanup = setTimeout(() => {
-                if (opts.sentMsg) {
+                if (sentMsg) {
                     ctx.api
-                        .editMessageText(opts.sentMsg.chat.id, opts.sentMsg.message_id, `This keyboard is expired.`)
+                        .editMessageText(sentMsg.chat.id, sentMsg.message_id, `This keyboard is expired.`)
                         .catch(logger.exception);
                 }
                 if (handlers.delete(uniqueId)) {
