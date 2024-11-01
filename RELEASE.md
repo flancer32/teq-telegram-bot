@@ -1,6 +1,6 @@
 # @teq-telegram-bot: Releases
 
-## 0.2.2 - TODO
+## 0.2.2
 
 - Bot description is added to `Telegram_Bot_Back_Api_Setup`.
 - Added `Telegram_Bot_Back_Mod_Handler_Callback_Query_Data` for managing inline keyboard callback data with unique
