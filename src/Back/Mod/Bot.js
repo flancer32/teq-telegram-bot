@@ -17,7 +17,7 @@ export default class Telegram_Bot_Back_Mod_Bot {
      * @param {Telegram_Bot_Back_Defaults} DEF
      * @param {TeqFw_Core_Shared_Api_Logger} logger
      * @param {TeqFw_Core_Back_Config} config
-     *  @param {Telegram_Bot_Back_Mod_Bot_Catch} botCatch
+     * @param {Telegram_Bot_Back_Mod_Bot_Catch} botCatch
      * @param {Telegram_Bot_Back_Api_Setup} apiSetup
      */
     constructor(
@@ -34,7 +34,9 @@ export default class Telegram_Bot_Back_Mod_Bot {
         const _CFG = config.getLocal(DEF.SHARED.NAME);
         const _WEB = config.getLocal(DEF.MOD_WEB.SHARED.NAME);
         let _bot;
-        let _webhookToken = randomUUID();
+
+        // Retrieve webhook token from configuration, or generate a random one if not provided
+        let _webhookToken = _CFG?.webhookSecret || randomUUID();
 
         // FUNCS
         /**
@@ -70,6 +72,33 @@ export default class Telegram_Bot_Back_Mod_Bot {
                     throw new Error(`Telegram API key not found. Please add it to './cfg/local.json'.`);
                 }
                 _bot = new Bot(_CFG.apiKeyTelegram, opts);
+
+                /**
+
+                 This is the order for handlers recommended by ChatGPT:
+
+                 // Register middleware
+                 bot.use(authMiddleware);
+                 bot.use(loggingMiddleware);
+
+                 // Register command handlers
+                 bot.command("start", startHandler);
+                 bot.command("help", helpHandler);
+
+                 // Register event handlers
+                 bot.on("my_chat_member", chatMemberHandler);
+                 bot.on("callback_query", callbackQueryHandler);
+                 bot.on("inline_query", inlineQueryHandler);
+
+                 // Register message handlers
+                 bot.on("message:text", textMessageHandler);
+                 bot.on("message:photo", photoMessageHandler);
+
+                 // Fallback handler
+                 bot.on("message", unknownMessageHandler);
+
+                 **/
+
                 botCatch.setup(_bot);
                 if (typeof apiSetup.description === 'function') {
                     await apiSetup.description(_bot);
@@ -104,7 +133,7 @@ export default class Telegram_Bot_Back_Mod_Bot {
                 return `https://${base}/` + DEF.SHARED.SPACE_BOT;
             };
 
-            //MAIN
+            // MAIN
             const bot = await this.initBot();
             const res = webhookCallback(bot, webhookAdapter, 'throw', 1000, _webhookToken);
 
