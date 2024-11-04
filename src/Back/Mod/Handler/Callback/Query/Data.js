@@ -33,7 +33,7 @@ export default class Telegram_Bot_Back_Mod_Handler_Callback_Query_Data {
         /**
          * Generates a unique identifier based on the chat and message ID.
          * @param {Object} message - The Telegram message object.
-         * @return {string} - A unique ID string.
+         * @returns {string} - A unique ID string.
          */
         const createUniqueId = (message) => {
             const chatId = message.chat.id;
@@ -83,7 +83,7 @@ export default class Telegram_Bot_Back_Mod_Handler_Callback_Query_Data {
         /**
          * Extracts the original callback data from the provided query data by removing the unique identifier.
          * @param {string} queryData - The full `callback_data` string containing the unique identifier and the original data.
-         * @return {string} - The original callback data without the unique identifier.
+         * @returns {string} - The original callback data without the unique identifier.
          */
         this.extractData = (queryData) => {
             // Split the queryData to separate unique ID and original callback data

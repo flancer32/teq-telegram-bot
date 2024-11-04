@@ -43,7 +43,7 @@ export default class Telegram_Bot_Back_Mod_Bot {
          * The adapter for the Grammy Bot to interconnect with HTTP request/response.
          * @param {IncomingMessage|Http2ServerRequest} req
          * @param {ServerResponse|Http2ServerResponse} res
-         * @return {WebhookAdapter}
+         * @returns {WebhookAdapter}
          */
         const webhookAdapter = (req, res) => {
             const secretHeaderFromRequest = req.headers[SECRET_HEADER_LOWERCASE];
@@ -64,7 +64,7 @@ export default class Telegram_Bot_Back_Mod_Bot {
         /**
          * Initialize the bot with API key from local config.
          * @param {Object} opts - @see https://github.com/grammyjs/grammY/blob/v1.29.0/src/bot.ts#L104
-         * @return {Promise<Bot>}
+         * @returns {Promise<Bot>}
          */
         this.initBot = async (opts = null) => {
             if (!_bot) {
@@ -123,7 +123,7 @@ export default class Telegram_Bot_Back_Mod_Bot {
 
         /**
          * Set up the endpoint for receiving HTTP requests from Telegram and return the handler for NodeJS HTTP/2(S) servers.
-         * @return {Promise<ReqResHandler>}
+         * @returns {Promise<ReqResHandler>}
          */
         this.initWebhookAdapter = async () => {
             // FUNCS

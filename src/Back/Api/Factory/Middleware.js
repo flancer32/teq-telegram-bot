@@ -12,7 +12,7 @@ export default class Telegram_Bot_Back_Api_Factory_Middleware {
      * @param {Object} [opts] - An optional object to configure the middleware.
      *                          Configuration options are specific to the type
      *                          of middleware being created.
-     * @return {function(ctx: Object, next: Function): Promise<void>}
+     * @returns {function(ctx: Object, next: Function): Promise<void>}
      *         A grammY middleware function. The function receives the context
      *         (`ctx`), which contains information about the update or message
      *         the bot is handling, and the `next` function, which passes control

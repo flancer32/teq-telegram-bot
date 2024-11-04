@@ -42,7 +42,7 @@ export default class Telegram_Bot_Back_Plugin_Dto_Config_Local {
     ) {
         /**
          * @param {Telegram_Bot_Back_Plugin_Dto_Config_Local.Dto} data
-         * @return {Telegram_Bot_Back_Plugin_Dto_Config_Local.Dto}
+         * @returns {Telegram_Bot_Back_Plugin_Dto_Config_Local.Dto}
          */
         this.createDto = function (data) {
             // create new DTO and populate it with initialization data

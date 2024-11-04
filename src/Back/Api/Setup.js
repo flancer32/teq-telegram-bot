@@ -9,7 +9,7 @@ export default class Telegram_Bot_Back_Api_Setup {
      * @see https://core.telegram.org/bots/features#commands
      *
      * @param {Bot} bot - A grammY bot instance.
-     * @return {Promise<void>}
+     * @returns {Promise<void>}
      */
     async commands(bot) {
         throw new Error('Please implement this method.');
@@ -19,7 +19,7 @@ export default class Telegram_Bot_Back_Api_Setup {
      * Set up description for the given `bot`.
      *
      * @param {Bot} bot - A grammY bot instance.
-     * @return {Promise<void>}
+     * @returns {Promise<void>}
      * @see https://core.telegram.org/bots/api#setmydescription
      */
     async description(bot) {
@@ -30,7 +30,7 @@ export default class Telegram_Bot_Back_Api_Setup {
      * Set up event handlers for the given `bot`.
      *
      * @param {Bot} bot - A grammY bot instance.
-     * @return {Promise<void>}
+     * @returns {Promise<void>}
      */
     async handlers(bot) {
         throw new Error('Please implement this method.');
@@ -40,7 +40,7 @@ export default class Telegram_Bot_Back_Api_Setup {
      * Set up middleware for the given `bot`.
      *
      * @param {Bot} bot - A grammY bot instance.
-     * @return {Promise<void>}
+     * @returns {Promise<void>}
      */
     async middleware(bot) {
         throw new Error('Please implement this method.');
